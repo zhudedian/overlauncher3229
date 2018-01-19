@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    <ImageView
+        android:id="@+id/shortcut_folder_thumbnail_grid"
+        android:layout_height="104dp"
+        android:layout_width="192dp"
+        android:layout_gravity="center"
+        />
+    </FrameLayout>
+    <ImageView
+        android:id="@+id/shortcut_folder_thumbnail_grid1"
+        android:layout_height="307dp"
+        android:layout_width="192dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        />
+    <TextView
+        android:id="@+id/shortcut_folder_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px58"
+        android:gravity="center"
+        android:focusable="false"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white_70"
+        android:background="@mipmap/sinatvtext"
+        android:textSize="22sp"/>
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"/>
+</RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    >
+<FrameLayout
+    android:layout_width="194dp"
+    android:layout_height="144dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:background="@mipmap/folder_sinatv_paly"
+    android:focusable="false">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"
+        android:focusable="false" />
+
+
+    <com.ider.overlauncher.view.ScrollTextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="105dp"
+        android:text="item1"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:focusable="false"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/app_size"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|center"-->
+        <!--android:layout_marginBottom="@dimen/h_9"-->
+        <!--android:focusable="false"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:text="大小:500M"-->
+        <!--android:textColor="#bba6a6a6"-->
+        <!--android:textSize="15sp" />-->
+    <FrameLayout
+        android:id="@+id/select_view"
+        android:layout_width="match_parent"
+        android:background="#c8000000"
+        android:alpha="0"
+        android:visibility="gone"
+        android:focusable="false"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h_45"
+            android:gravity="center"
+            android:background="@drawable/login_button_selector"
+            android:text="打开"
+            android:nextFocusLeft="@+id/btn_uninstall"
+            android:nextFocusRight="@+id/btn_uninstall"
+            android:nextFocusUp="@+id/btn_uninstall"
+            android:nextFocusDown="@+id/btn_uninstall"
+            android:focusable="false"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:layout_marginTop="30dp"
+            />
+        <Button
+            android:id="@+id/btn_uninstall"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h_45"
+            android:gravity="center"
+            android:text="删除"
+            android:nextFocusLeft="@+id/btn_uninstall"
+            android:nextFocusRight="@+id/btn_uninstall"
+            android:background="@drawable/uninstall_button_selector"
+            android:nextFocusUp="@+id/btn_open"
+            android:nextFocusDown="@+id/btn_uninstall"
+            android:focusable="false"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:layout_marginTop="74dp"
+            />
+    </FrameLayout>
+</FrameLayout>
+</RelativeLayout>

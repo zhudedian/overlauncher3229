@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/h_50"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/h_30"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@mipmap/fastkeytitle"
+        />
+    <RelativeLayout
+        android:layout_width="@dimen/h_620"
+        android:layout_height="@dimen/h_520"
+        android:background="@mipmap/fasykey_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/h_100"
+        >
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_1"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+       android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/h_30"
+        android:layout_marginTop="@dimen/h_25"
+        app:key_num="@mipmap/num1" />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_2"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/h_230"
+        android:layout_marginTop="@dimen/h_25"
+        app:key_num="@mipmap/num2"
+        />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_3"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/h_25"
+        android:layout_marginLeft="@dimen/h_430"
+        app:key_num="@mipmap/num3"
+        />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_4"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_150"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/h_30"
+        app:key_num="@mipmap/num4"
+         />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_5"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_150"
+        android:layout_marginLeft="@dimen/h_230"
+        app:key_num="@mipmap/num5"
+       />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_6"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_150"
+        android:layout_marginLeft="@dimen/h_430"
+        app:key_num="@mipmap/num6"
+         />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_7"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_275"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/h_30"
+        app:key_num="@mipmap/num7"
+         />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_8"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_275"
+        android:layout_marginLeft="@dimen/h_230"
+        app:key_num="@mipmap/num8"
+         />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_9"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_275"
+        android:layout_marginLeft="@dimen/h_430"
+        app:key_num="@mipmap/num9"
+       />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_tv"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_400"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/h_30"
+        app:key_num="@mipmap/key_tv"
+        app:key_icon="1"
+        />
+
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_0"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_400"
+        android:layout_marginLeft="@dimen/h_230"
+        app:key_num="@mipmap/num0"
+         />
+    
+    <com.ider.overlauncher.view.KeyItem
+        android:id="@+id/key_vod"
+        android:layout_width="@dimen/h_160"
+        android:layout_height="@dimen/h_95"
+        android:layout_marginTop="@dimen/h_400"
+        android:layout_marginLeft="@dimen/h_430"
+        app:key_num="@mipmap/key_vod"
+        app:key_icon="1"
+         />
+    </RelativeLayout>
+<TextView
+    android:id="@+id/select_tip"
+    android:layout_width="@dimen/h_200"
+    android:layout_height="@dimen/h_100"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginLeft="@dimen/h_50"
+    android:layout_marginBottom="@dimen/h_10"
+    android:textColor="@color/white"
+    android:textSize="@dimen/px36"
+    />
+</RelativeLayout>

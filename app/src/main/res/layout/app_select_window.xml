@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/add_background"
+>
+    
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="550dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="@dimen/px300"
+            android:layout_height="wrap_content"
+            android:background="@drawable/folder_thumbnail_background"
+            android:layout_marginTop="@dimen/px20"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/add_keytip"/>
+
+        <GridView
+            android:id="@+id/app_select_grid"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px520"
+            android:layout_marginTop="@dimen/px90"
+            android:background="@drawable/folder_thumbnail_background"
+            android:listSelector="@drawable/add_selector"
+            android:numColumns="5"/>
+    </LinearLayout>
+
+</FrameLayout>

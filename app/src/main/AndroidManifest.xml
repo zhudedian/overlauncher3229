@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.ider.overlauncher"
+          android:sharedUserId="android.uid.system">
+
+    <!-- android:sharedUserId="android.uid.system"  <uses-permission android:name="android.permission.INSTALL_PACKAGES"/> -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SET_TIME"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+
+    <application
+        android:name=".AppContext"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.HOME"/>
+                <category android:name="android.intent.category.MONKEY"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".FolderActivity"/>
+
+        <service android:name=".services.ConfigService"/>
+
+        <activity
+            android:name=".applist.AppListActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.ider.applist"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AppInfo"
+            android:theme="@style/MyDialog"/>
+        <activity
+            android:name=".FastKey"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".CityPicker"
+            android:launchMode="singleTask"/>
+        <activity android:name=".speedTest.SpeedActivity"/>
+        <activity
+            android:name=".StartActivity"
+            android:theme="@style/MyDialog2"/>
+
+        <receiver
+            android:name=".Sql.MyReceiverSettings"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="con.ider.overlauncher.SETTINGS"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".dream.DayDreamService"
+                  android:exported="true"
+                  android:icon="@mipmap/ic_launcher"
+                  android:label="ScreenSaver"
+                  android:permission="android.permission.BIND_DREAM_SERVICE"
+        >
+        <intent-filter>
+            <action android:name="android.service.dreams.DreamService"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+    </service>
+    </application>
+
+</manifest>

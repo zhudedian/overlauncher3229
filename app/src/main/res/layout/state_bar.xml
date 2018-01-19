@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ider="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:id="@+id/state_bar_icon_usb"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/px60"
+        android:layout_alignParentLeft="true"
+        android:src="@mipmap/usb_on"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_marginTop="@dimen/px25"
+        />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/state_bar_icon_search"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/px60"-->
+        <!--android:layout_toRightOf="@+id/state_bar_icon_usb"-->
+        <!--android:src="@mipmap/searchon"-->
+        <!--android:focusable="false"-->
+        <!--android:focusableInTouchMode="false"-->
+        <!--android:layout_marginTop="@dimen/px25"-->
+        <!--/>-->
+    <ImageView
+        android:id="@+id/launchsetting"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/px60"
+        android:focusable="false"
+        android:layout_toRightOf="@+id/state_bar_icon_usb"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/launchsettings"
+        android:layout_marginTop="@dimen/px25"
+        />
+    <ImageView
+        android:id="@+id/launchrockble"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/px60"
+        android:focusable="false"
+        android:layout_toRightOf="@+id/launchsetting"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/btn_rockable"
+        android:layout_marginTop="@dimen/px25"
+        />
+    <ImageView
+        android:id="@+id/state_bar_icon_network"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/px60"
+        android:layout_toRightOf="@+id/launchrockble"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_marginTop="@dimen/px25"
+        />
+
+
+    <com.ider.overlauncher.utils.MyDigitalClock
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/state_bar_icon_network"
+        android:layout_marginTop="4dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="@android:color/white"
+        android:textSize="45sp"
+        ider:format="kk:mm" />
+
+    <!--<com.ider.overlauncher.view.Weather-->
+        <!--android:id="@+id/weather"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_toRightOf="@+id/clock"-->
+        <!--android:text="@string/Locating"-->
+        <!--android:focusableInTouchMode="false"-->
+        <!--android:focusable="false"-->
+        <!--android:textColor="@android:color/white"/>-->
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="34dp"
+        android:layout_toRightOf="@+id/clock"
+        android:layout_marginRight="3dp"
+        android:singleLine="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/week"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp"
+        android:layout_toRightOf="@+id/clock"
+        android:gravity="center"
+        android:singleLine="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+</RelativeLayout>

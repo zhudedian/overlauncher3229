@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="480dp"
+    android:layout_height="380dp"
+    android:background="@mipmap/install_background" >
+
+    <ProgressBar 
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:layout_margin="7dp"/>
+    <TextView
+        android:text="@string/holdtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp" />
+    <TextView
+        android:text="@string/hold"
+        android:textSize="23sp"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/fileName" 
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="280dp"
+        android:textSize="22sp" />
+    
+    <ProgressBar 
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_margin="10dp"/>
+
+</RelativeLayout>

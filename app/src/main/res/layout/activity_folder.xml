@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+<ImageView
+    android:id="@+id/bg_iv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    android:focusable="false"
+    />
+    <com.ider.overlauncher.view.ScrollTextView
+        android:id="@+id/folder_title"
+        android:layout_width="@dimen/px200"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:focusable="false"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/cardview_light_background"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:singleLine="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:ellipsize="marquee"
+        />
+    <GridView
+        android:id="@+id/folder_grid"
+        android:layout_width="@dimen/px1480"
+        android:layout_height="@dimen/px570"
+        android:layout_centerInParent="true"
+        android:nextFocusUp="@+id/folder_title"
+        android:transitionName="FolderGrid"
+        android:padding="@dimen/px40"
+        android:numColumns="5"
+        android:horizontalSpacing="@dimen/px50"
+        android:layout_marginTop="@dimen/px200"
+        android:listSelector="@drawable/folder_selector"
+        android:scrollbars="none"
+        android:background="@drawable/folder_thumbnail_background"/>
+    <View
+        android:id="@+id/firstfocus"
+        android:layout_width="@dimen/px275"
+        android:layout_height="@dimen/px150"
+        android:layout_marginTop="60dp"
+        android:focusable="false"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/focusiv"
+        />
+    <TextView
+        android:id="@+id/tps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/px40"
+        android:layout_marginLeft="@dimen/px40"
+        android:textColor="@color/white_90"
+        android:textSize="@dimen/px40"
+        android:visibility="invisible"
+        android:text="@string/foldertip"/>
+
+</RelativeLayout>
