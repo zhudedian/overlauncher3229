@@ -122,11 +122,11 @@ public class AppListActivity extends Activity implements AppLicationViewDao.upda
         int x, y;
 
         if (currentSelectedLine == 0) {
-            y = dip2px(getApplicationContext(), 182);
-            x = dip2px(getApplicationContext(), 212 * (position % 5) + 10);
+            y = dip2px(getApplicationContext(), 163);
+            x = dip2px(getApplicationContext(), 148 * (position % 5) + 53);
         } else {
-            y = dip2px(getApplicationContext(), 192) + dip2px(getApplicationContext(), 144 );
-            x = dip2px(getApplicationContext(), 212 * (position % 5) + 10);
+            y = dip2px(getApplicationContext(), 163) + dip2px(getApplicationContext(), 112 );
+            x = dip2px(getApplicationContext(), 148 * (position % 5) + 53);
         }
         return new int[]{x, y};
     }

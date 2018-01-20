@@ -21,7 +21,7 @@
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold"
         android:gravity="center"
-        android:textSize="40sp"
+        android:textSize="27sp"
         android:singleLine="true"
         android:marqueeRepeatLimit="marquee_forever"
         android:ellipsize="marquee"

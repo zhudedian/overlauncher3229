@@ -10,20 +10,21 @@
     tools:context="com.ider.overlauncher.HomeActivity">
 
     <ImageView
-    android:layout_width="188dp"
-    android:layout_height="41dp"
+    android:layout_width="158dp"
+    android:layout_height="31dp"
     android:src="@mipmap/btnyun"
-   android:layout_marginLeft="30dp"
-    android:layout_marginTop="20dp"/>
+   android:layout_marginLeft="40dp"
+    android:layout_marginTop="40dp"/>
+    <include layout="@layout/state_layout"/>
     <TextView
         android:id="@+id/mysinatvtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/foldertip"
-        android:textSize="22dp"
+        android:textSize="18dp"
         android:textColor="#FFFFFF"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="325dp"
         android:visibility="gone"
         />
 
@@ -84,61 +85,51 @@
     </FrameLayout>
 <RelativeLayout
     android:id="@+id/relativefolder"
-    android:layout_width="@dimen/px1680"
-    android:layout_height="@dimen/px360"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:layout_marginTop="@dimen/px705"
+    android:layout_marginTop="350dp"
     >
     <com.ider.overlauncher.view.ShortcutFolder
         android:id="@+id/folder1"
-        android:layout_width="194dp"
-        android:layout_height="106dp"
+        style="@style/SinatvFolder"
         android:tag="01"
-        android:background="@mipmap/folder_sinatv"
-        android:layout_marginLeft="@dimen/px30"
-        android:focusable="true"
+
+        android:layout_marginLeft="110dp"
         android:layout_marginTop="@dimen/px30"
         android:nextFocusLeft="@+id/folder1"
         />
     <com.ider.overlauncher.view.SinatvFolder
         android:id="@+id/sinatv"
-        android:layout_width="194dp"
-        android:layout_height="106dp"
+        style="@style/SinatvFolder"
         android:layout_toRightOf="@+id/folder1"
         android:layout_marginLeft="@dimen/px20"
         android:layout_marginTop="@dimen/px30"
         android:tag="001"
-        android:focusable="true"
         />
     <com.ider.overlauncher.view.SinatvFolder
         android:id="@+id/sinatv1"
-        android:layout_width="194dp"
-        android:layout_height="106dp"
+        style="@style/SinatvFolder"
         android:layout_toRightOf="@+id/sinatv"
         android:layout_marginLeft="@dimen/px20"
         android:layout_marginTop="@dimen/px30"
         android:tag="002"
-        android:focusable="true"
         />
     <com.ider.overlauncher.view.SinatvFolder
         android:id="@+id/sinatv2"
-        android:layout_width="194dp"
-        android:layout_height="106dp"
+        style="@style/SinatvFolder"
         android:layout_toRightOf="@+id/sinatv1"
         android:layout_marginLeft="@dimen/px20"
         android:layout_marginTop="@dimen/px30"
         android:tag="003"
-        android:focusable="true"
         />
     <com.ider.overlauncher.view.SinatvFolder
         android:id="@+id/sinatv3"
-        android:layout_width="194dp"
-        android:layout_height="106dp"
+        style="@style/SinatvFolder"
         android:layout_toRightOf="@+id/sinatv2"
         android:layout_marginLeft="@dimen/px20"
         android:layout_marginTop="@dimen/px30"
         android:tag="004"
-        android:focusable="true"
         />
     <!--<com.ider.overlauncher.view.ShortcutFolder-->
         <!--android:id="@+id/folder2"-->
@@ -183,19 +174,13 @@
        <com.ider.overlauncher.view.StateBar
            android:id="@+id/statebar"
            android:focusable="false"
+           android:visibility="gone"
            android:focusableInTouchMode="false"
            android:layout_width="match_parent"
            android:layout_height="match_parent"/>
 
     </FrameLayout>
-    <!--下方隐藏栏-->
-    <com.ider.overlauncher.BottomView
-        android:id="@+id/view_mybottom"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/h_500"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/h_top"
-        />
+
     <ImageView
         android:id="@+id/blur_bg"
         android:scaleType="fitXY"
@@ -213,16 +198,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="120dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="100dp"
             android:layout_alignLeft="@+id/relativefolder"
             >
 
           <com.ider.overlauncher.view.MyRelative
               android:id="@+id/myrelative"
-              android:layout_width="194dp"
-              android:layout_height="143dp"
-              android:focusable="true"
+              style="@style/Myrealay"
               android:onClick="TopOnclick"
               android:clickable="true"
               android:tag="1"
@@ -231,9 +213,7 @@
               />
           <com.ider.overlauncher.view.MyRelative
               android:id="@+id/myrelative2"
-              android:layout_width="194dp"
-              android:layout_height="143dp"
-              android:focusable="true"
+              style="@style/Myrealay"
               android:layout_toRightOf="@+id/myrelative"
               android:layout_marginLeft="@dimen/px20"
               android:onClick="TopOnclick"
@@ -241,9 +221,7 @@
               android:tag="2" />
           <com.ider.overlauncher.view.MyRelative
               android:id="@+id/myrelative3"
-              android:layout_width="194dp"
-              android:layout_height="143dp"
-              android:focusable="true"
+              style="@style/Myrealay"
               android:layout_toRightOf="@+id/myrelative2"
               android:layout_marginLeft="@dimen/px20"
               android:onClick="TopOnclick"
@@ -253,9 +231,7 @@
 
             <com.ider.overlauncher.view.MyRelative
                 android:id="@+id/myrelative4"
-                android:layout_width="194dp"
-                android:layout_height="143dp"
-                android:focusable="true"
+                style="@style/Myrealay"
                 android:layout_below="@+id/myrelative"
                 android:layout_toRightOf="@+id/movie_folder"
                 android:layout_marginLeft="@dimen/px20"
@@ -265,9 +241,7 @@
                 android:tag="4"/>
             <com.ider.overlauncher.view.MyRelative
                 android:id="@+id/myrelative5"
-                android:layout_width="194dp"
-                android:layout_height="143dp"
-                android:focusable="true"
+                style="@style/Myrealay"
                 android:layout_toRightOf="@+id/myrelative4"
                 android:layout_below="@+id/myrelative2"
                 android:layout_marginLeft="@dimen/px20"
@@ -277,9 +251,7 @@
                 android:tag="5" />
             <com.ider.overlauncher.view.MyRelative
                 android:id="@+id/myrelative6"
-                android:layout_width="194dp"
-                android:layout_height="143dp"
-                android:focusable="true"
+                style="@style/Myrealay"
                 android:layout_toRightOf="@+id/myrelative5"
                 android:layout_below="@+id/myrelative3"
                 android:layout_marginLeft="@dimen/px20"
@@ -289,8 +261,8 @@
                 android:tag="6" />
             <com.ider.overlauncher.view.ShortcutFolder
                 android:id="@+id/movie_folder"
-                android:layout_width="194dp"
-                android:layout_height="300dp"
+                android:layout_width="140dp"
+                android:layout_height="212dp"
                 android:background="@drawable/folder_tag2"
                 android:tag="03"
                 android:layout_toRightOf="@+id/folder2"
@@ -299,17 +271,25 @@
 
             <com.ider.overlauncher.view.ShortcutFolder
                 android:id="@+id/folder2"
-                android:layout_width="194dp"
-                android:layout_height="300dp"
+                android:layout_width="140dp"
+                android:layout_height="212dp"
                 android:background="@drawable/folder_tag2"
                 android:tag="02"
                 android:nextFocusLeft="@+id/folder2"
+                android:layout_marginLeft="110dp"
                 android:layout_alignParentLeft="true"
                 android:focusable="true"
                 />
 
         </RelativeLayout>
 
-
+    <!--下方隐藏栏-->
+    <com.ider.overlauncher.BottomView
+        android:id="@+id/view_mybottom"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-400dp"
+        />
 
 </RelativeLayout>

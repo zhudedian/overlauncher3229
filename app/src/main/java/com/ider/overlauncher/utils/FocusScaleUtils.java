@@ -29,7 +29,7 @@ public class FocusScaleUtils {
 
     public FocusScaleUtils() {
         this.durationLarge = 300;
-        this.durationSmall = 500;
+        this.durationSmall = 200;
         this.scale = 1.1F;
         this.interpolatorLarge = new AccelerateInterpolator(1.5F);
         this.interpolatorSmall = new DecelerateInterpolator(1.5F);
@@ -42,7 +42,7 @@ public class FocusScaleUtils {
 
     public FocusScaleUtils(int durationLarge, int durationSmall, float scale, Interpolator interpolatorLarge, Interpolator interpolatorSmall) {
         this.durationLarge = 300;
-        this.durationSmall = 500;
+        this.durationSmall = 200;
         this.scale = 1.1F;
         this.durationLarge = durationLarge;
         this.durationSmall = durationSmall;

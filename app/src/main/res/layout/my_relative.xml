@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_myrelative"
     >
 
     <ImageView
         android:id="@+id/imagedata"
-        android:layout_width="190dp"
-        android:layout_height="138dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
         android:layout_centerInParent="true"
          />
     <ImageView
@@ -20,8 +20,8 @@
     <TextView
         android:id="@+id/textdata"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textSize="22sp"
+        android:layout_height="22dp"
+        android:textSize="15sp"
         android:textColor="#ffffff"
         android:layout_alignParentBottom="true"
         android:gravity="center"

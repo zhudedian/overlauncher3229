@@ -21,7 +21,7 @@ import com.ider.overlauncher.utils.BaseFocusView;
 public class AnimatorExecutor {
     private AnimatorFocusView focusView;
     protected long mAnimatorDuration;
-    private int animatorDuration = 250;
+    private int animatorDuration = 100;
     private int animatorDurationTemporary = -1;
     private float fL;
     private float fT;

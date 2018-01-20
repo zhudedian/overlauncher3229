@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/px150"
-    android:layout_height="@dimen/px150"
+    android:layout_width="70dp"
+    android:layout_height="70dp"
     android:background="@mipmap/item_back"
     >
     <View
@@ -12,10 +12,10 @@
         />
     <ImageView
         android:id="@+id/tiv_icon"
-        android:layout_width="@dimen/px120"
-        android:layout_height="@dimen/px120"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/px20"/>
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/tv_title"
@@ -23,11 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/px4"
+        android:layout_marginBottom="5dp"
         android:maxLength="5"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:textSize="@dimen/px36"/>
+        android:textSize="15sp"/>
 
 
 </RelativeLayout>

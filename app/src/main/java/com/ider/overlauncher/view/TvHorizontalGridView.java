@@ -233,9 +233,9 @@ public class TvHorizontalGridView extends RelativeLayout {
 
 		this.rows = custom.getInteger(R.styleable.TvHorizontalGridView_rows, 2);
 		this.spaceHori = (int) custom.getDimension(
-				R.styleable.TvHorizontalGridView_spaceHori, 10);
+				R.styleable.TvHorizontalGridView_spaceHori, 20);
 		this.spaceVert = (int) custom.getDimension(
-				R.styleable.TvHorizontalGridView_spaceVert, 10);
+				R.styleable.TvHorizontalGridView_spaceVert, 20);
 
 		itemWidth = (int) custom.getDimension(R.styleable.TvHorizontalGridView_itemWidth,
 				10);
@@ -937,10 +937,11 @@ public class TvHorizontalGridView extends RelativeLayout {
 		cursor.setVisibility(View.VISIBLE);
 		final LayoutParams params = (LayoutParams) item
 				.getLayoutParams();
-		final int l = params.leftMargin + paddingLeft - boarderLeft;
-		final int t = params.topMargin + paddingTop - boarderTop;
-		final int r = l + itemWidth + boarderRight;
-		final int b = t + itemHeight + boarderBottom;
+		final int fitXY = 20;
+		final int l = params.leftMargin + paddingLeft - boarderLeft-fitXY;
+		final int t = params.topMargin + paddingTop - boarderTop-fitXY;
+		final int r = l + itemWidth + boarderRight+fitXY*2;
+		final int b = t + itemHeight + boarderBottom+fitXY*2;
 		// 判断动画类型
 		switch (animationType) {
 		case ANIM_DEFAULT:

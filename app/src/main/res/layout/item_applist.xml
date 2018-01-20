@@ -5,8 +5,8 @@
 
     >
 <FrameLayout
-    android:layout_width="194dp"
-    android:layout_height="144dp"
+    android:layout_width="140dp"
+    android:layout_height="100dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:layout_marginTop="6dp"
@@ -16,8 +16,8 @@
 
     <ImageView
         android:id="@+id/app_icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:scaleType="fitXY"
@@ -30,13 +30,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="70dp"
         android:text="item1"
         android:singleLine="true"
         android:ellipsize="marquee"
         android:focusable="false"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
     <!--<TextView-->
         <!--android:id="@+id/app_size"-->
         <!--android:layout_width="match_parent"-->
@@ -59,7 +59,7 @@
         <Button
             android:id="@+id/btn_open"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/h_45"
+            android:layout_height="30dp"
             android:gravity="center"
             android:background="@drawable/login_button_selector"
             android:text="打开"
@@ -69,13 +69,13 @@
             android:nextFocusDown="@+id/btn_uninstall"
             android:focusable="false"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
             />
         <Button
             android:id="@+id/btn_uninstall"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/h_45"
+            android:layout_height="30dp"
             android:gravity="center"
             android:text="删除"
             android:nextFocusLeft="@+id/btn_uninstall"
@@ -85,8 +85,8 @@
             android:nextFocusDown="@+id/btn_uninstall"
             android:focusable="false"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:layout_marginTop="74dp"
+            android:textSize="20sp"
+            android:layout_marginTop="55dp"
             />
     </FrameLayout>
 </FrameLayout>

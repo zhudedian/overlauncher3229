@@ -48,8 +48,8 @@
     <GridView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/px630"
-        android:layout_marginTop="@dimen/h_170"
+        android:layout_height="334dp"
+        android:layout_marginTop="140dp"
         android:layout_marginLeft="@dimen/h_80"
         android:layout_marginRight="@dimen/h_80"
         android:layout_marginBottom="@dimen/h_8"
@@ -63,11 +63,11 @@
         android:paddingBottom="60dp"/>
     <com.ider.overlauncher.applist.FlyImageView
         android:id="@+id/mainUpView1"
-        android:layout_marginTop="201dp"
-        android:layout_marginLeft="88dp"
-        android:layout_width="245dp"
+        android:layout_marginTop="174dp"
+        android:layout_marginLeft="92dp"
+        android:layout_width="180dp"
         android:focusable="false"
-        android:layout_height="193dp"
+        android:layout_height="145dp"
         android:visibility="invisible"
         android:background="@drawable/focusiv" />
     <ProgressBar

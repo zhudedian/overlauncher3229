@@ -4,6 +4,9 @@ import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -60,6 +63,7 @@ import com.ider.overlauncher.utils.FocusScaleUtils;
 import com.ider.overlauncher.utils.FocusUtils;
 import com.ider.overlauncher.utils.NetUtil;
 import com.ider.overlauncher.utils.PreferenceManager;
+import com.ider.overlauncher.utils.UsbUtil;
 import com.ider.overlauncher.view.AppSelectWindow;
 import com.ider.overlauncher.view.CompareImageView;
 import com.ider.overlauncher.view.MyRelative;
@@ -96,6 +100,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
         private static PreferenceManager preferences;
         private View homeView;
          private TextView week;
+    private ImageView stateWifi, stateBluetooth, stateUsb,sdcard;
         public  FocusScaleUtils focusScaleUtils;
         public  FocusUtils focusUtils;
     private View lastFocusView;
@@ -166,6 +171,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
+            updateNetInfo();
+            setSdState();
+            setUsbState();
+            try {
+                BluetoothManager btManager = (BluetoothManager) getSystemService(Service.BLUETOOTH_SERVICE);
+                setBtState(btManager.getAdapter().getState());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
 
@@ -244,6 +258,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
             serverGrid = (TvHorizontalGridView) bottomView.findViewById(R.id.grid_notdownload);
             downloadGrid = (TvHorizontalGridView) bottomView.findViewById(R.id.grid_download);
             blurBackground = (ImageView) findViewById(R.id.blur_bg);
+            stateWifi = (ImageView) findViewById(R.id.state_wifi);
+            stateBluetooth = (ImageView) findViewById(R.id.state_bluetooth);
+            stateUsb = (ImageView) findViewById(R.id.state_usb);
+            sdcard = (ImageView) findViewById(R.id.sd_card);
             stateBar = (StateBar) findViewById(R.id.statebar);
             view_mytop = (TopDialog) findViewById(R.id.view_mytop);
             myRelative = (MyRelative)findViewById( R.id.myrelative);
@@ -339,7 +357,46 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
     //            viewsfolder[i].setOnFocusChangeListener(this);
     //       }
         }
-
+    public void updateNetInfo() {
+        if (NetUtil.isEthernetConnect(this)) {
+            stateWifi.setImageResource(R.drawable.ic_settings_ethernet_white_36dp);
+            return;
+        }
+        if (NetUtil.isWifiConnect(this)) {
+            stateWifi.setImageResource(R.drawable.ic_wifi_white_36dp);
+            return;
+        }
+        stateWifi.setImageResource(R.drawable.ic_signal_wifi_off_white_36dp);
+    }
+    private void setSdState(){
+        if (UsbUtil.checkAmlogic6Sd()){
+            sdcard.setVisibility(View.VISIBLE);
+        }else {
+            sdcard.setVisibility(View.GONE);
+        }
+    }
+    private void setUsbState() {
+        if(UsbUtil.checkAmlogic6Usb()) {
+            stateUsb.setVisibility(View.VISIBLE);
+        } else {
+            stateUsb.setVisibility(View.GONE);
+        }
+    }
+    private void setBtState(int state) {
+        switch (state) {
+            case BluetoothAdapter.STATE_ON:
+                stateBluetooth.setVisibility(View.VISIBLE);
+                stateBluetooth.setImageResource(R.drawable.ic_bluetooth_white_36dp);
+                break;
+            case BluetoothAdapter.STATE_OFF:
+                stateBluetooth.setVisibility(View.GONE);
+                break;
+            case BluetoothAdapter.STATE_CONNECTED:
+                stateBluetooth.setVisibility(View.VISIBLE);
+                stateBluetooth.setImageResource(R.drawable.ic_bluetooth_connected_white_36dp);
+                break;
+        }
+    }
         public static boolean isFirstIn(Context context) {
              preferences = PreferenceManager.getInstance(AppContext.getAppContext());
             boolean firstIn = preferences.getBoolean("first_in");
@@ -369,13 +426,26 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                 focusScaleUtils.scaleToNormal();
             }
         }
-
+    BroadcastReceiver btReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
+                int blueState = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, 0);
+                setBtState(blueState);
+            }
+        }
+    };
         private void registReceivers() {
             IntentFilter filter;
             filter = new IntentFilter();
             filter.addAction(DeskConstant.ACTION_UPDATE_PAGE_DETAIL);
             filter.addAction(Constant.PACKAGE_TOOL_WEATHER);
             registerReceiver(custreceiver, filter);
+
+            filter = new IntentFilter();
+            filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+            registerReceiver(btReceiver, filter);
 
             filter = new IntentFilter();
             filter.addAction(NetUtil.CONNECTIVITY_CHANGE);
@@ -442,6 +512,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                 unregisterReceiver(netReceiver);
                 unregisterReceiver(mysinatv);
                 unregisterReceiver(mysinatvoff);
+                unregisterReceiver(btReceiver);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -592,6 +663,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
                 String data = intent.getDataString();
+                setSdState();
+                setUsbState();
                 if (Intent.ACTION_MEDIA_MOUNTED.equals(action)) {
                     stateBar.updateUsbStatetwo(true);
                     String path = data.substring(7,data.length());
@@ -679,6 +752,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
             @Override
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
+                updateNetInfo();
                 if (NetUtil.CONNECTIVITY_CHANGE.equals(action)) {
                     if (NetUtil.isNetworkAvailable(AppContext.getAppContext())) {
                         if (dialog != null) {
@@ -1155,9 +1229,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                         isShow = true;
                         showAnimBlurBackground(0);
                         if (pmanager.ifConfigServiceOn()) {
-                            pullDownTopDialog(getResources().getDimension(R.dimen.h_210), 1, istop);
+                            pullDownTopDialog(300f, 1, istop);
                         } else {
-                            pullDownTopDialog(getResources().getDimension(R.dimen.h_440), 1, istop);
+                            pullDownTopDialog(650f, 1, istop);
                         }
                         // pullDownTopDialog(getResources().getDimension(R.dimen.h_210), 1,istop);
     //                    startMarqueen(getResources().getString(R.string.title_tip));
@@ -1174,7 +1248,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
             if(blurBackground.getAlpha()==0)
             {
                 ObjectAnimator animator = ObjectAnimator.ofFloat(blurBackground, "alpha", 0.0f, 1.0f);
-                animator.setDuration(300);
+                animator.setDuration(200);
                 animator.start();
             }
         }
@@ -1438,7 +1512,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                         @Override
                         public void run() {
                             isShow = false;
-                            pullDownTopDialog(getResources().getDimension(R.dimen.h_655), 0, istop);
+                            pullDownTopDialog(970f, 0, istop);
                             hideAnimBlurBackground();
                             //  stopMarqueen();
                         }
@@ -1451,7 +1525,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                         @Override
                         public void run() {
                             isTopShow = false;
-                            pullDownTopDialog(getResources().getDimension(R.dimen.px100t),0,false);
+                            pullDownTopDialog(-220f,0,false);
                             hideAnimBlurBackground();
                             //  stopMarqueen();
                         }
@@ -1469,7 +1543,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                     public void run() {
                         isTopShow = true;
                         showAnimBlurBackground(0);
-                        pullDownTopDialog(Float.intBitsToFloat(0),1,false);
+                        pullDownTopDialog(0f,1,false);
                     }
                 }, 300);
             }
