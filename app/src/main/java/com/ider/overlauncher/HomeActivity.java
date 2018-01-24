@@ -828,7 +828,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intent = new Intent();
-                            intent.setComponent(new ComponentName("com.zxy.idersettings","com.rk_itvui.settings.network_settingnew"));
+                            intent.setComponent(new ComponentName("com.android.settings","com.android.settings..wifi.WifiSettings"));
                             startActivity(intent);
                         }
                     });

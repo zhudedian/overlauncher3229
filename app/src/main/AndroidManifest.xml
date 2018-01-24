@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.ider.overlauncher"
-          android:sharedUserId="android.uid.system">
+          >
 
     <!-- android:sharedUserId="android.uid.system"  <uses-permission android:name="android.permission.INSTALL_PACKAGES"/> -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -28,6 +28,7 @@
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.HOME"/>
                 <category android:name="android.intent.category.MONKEY"/>
