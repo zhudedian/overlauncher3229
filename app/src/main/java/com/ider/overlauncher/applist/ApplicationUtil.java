@@ -39,6 +39,7 @@ public class ApplicationUtil {
             apps.add(app);
         }
         apps.remove(doApplication(context, "com.yidian.calendar"));
+        apps.remove(doApplication(context, "com.android.settings"));
         return apps;
     }
 

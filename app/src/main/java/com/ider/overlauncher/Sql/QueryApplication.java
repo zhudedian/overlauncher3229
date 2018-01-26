@@ -25,7 +25,8 @@ public class QueryApplication {
         List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent, 0);
         for (ResolveInfo resolveInfo : resolveInfos) {
             String packageName = resolveInfo.activityInfo.applicationInfo.packageName;
-            if (!packageName.equals("com.ider.tools")) {
+            if (!packageName.equals("com.ider.tools")&&!packageName.equals("com.android.settings")
+            &&!packageName.equals("com.yidian.calendar")) {
                 enties.add(new PackageHolder(packageName, null));
             }
 

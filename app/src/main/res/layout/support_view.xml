@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/outside_relative"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#da050505">
+    <LinearLayout
+        android:id="@+id/inner_linear"
+        android:orientation="vertical"
+        android:layout_width="400dp"
+        android:layout_height="240dp"
+        android:layout_centerInParent="true"
+        android:paddingBottom="20dp"
+        android:background="@drawable/update_back">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="部分服务需要第三方应用软件的支持，点击下方确认按钮，将安装第三方应用。"
+            android:textSize="25dp"/>
+
+        <Button
+            android:id="@+id/ok_action"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:textSize="20dp"
+            android:focusable="true"
+            android:background="@drawable/update_button_back"
+            android:text="确定"/>
+    </LinearLayout>
+</RelativeLayout>

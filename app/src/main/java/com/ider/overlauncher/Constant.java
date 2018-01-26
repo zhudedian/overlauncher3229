@@ -20,13 +20,13 @@ public class Constant {
 
     public static final String ACTION_CHOSEN="tenvideo2://?action=4&tab_id=chosen";
     public static final String ACTION_MOVIE="tenvideo2://?action=3&channel_code=movie";
-    public static final String ACTION_CHILDREN="tenvideo2://?action=3&channel_code=cartoon";
+    public static final String ACTION_CHILDREN="tenvideo2://?action=3&channel_code=children&channel_name=儿童&menu_name=看动画";
     public static final String ACTION_YUESHOW="tenvideo2://?action=3&channel_code=yueshow_video";
     public static final String ACTION_TV="tenvideo2://?action=3&channel_code=tv";
     public static final String ACTION_VARIETY="tenvideo2://?action=3&channel_code=variety";
     public static final String ACTION_PHYSCAL_PAY="tenvideo2://?action=3&channel_code=physical_pay";
 
-    public static final String ACTION_HROCKCHIP = "com.android.rockchip";
+    public static final String ACTION_HROCKCHIP = "com.softwinner.TvdFileManager";
     public static final String ACTION_HISADD = "com.tv.history.add";
     public static final String ACTION_HISDELTOAPP = "com.tv..history.del.toapp";
     public static final String ACTION_HISDELTOLAUNCHER = "com.tv.favorite..history.del.tolauncher";

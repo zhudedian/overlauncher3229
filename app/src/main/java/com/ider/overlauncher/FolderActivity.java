@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -27,7 +26,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.ider.overlauncher.Sql.QueryApplication;
 import com.ider.overlauncher.adapter.AppAdapter;
 import com.ider.overlauncher.applist.AppListActivity;
 import com.ider.overlauncher.db.DbManager;
@@ -37,7 +35,6 @@ import com.ider.overlauncher.gson.GsonUtil;
 import com.ider.overlauncher.gson.PopupUtil;
 import com.ider.overlauncher.gson.UpdatePopup;
 import com.ider.overlauncher.model.PackageHolder;
-import com.ider.overlauncher.services.ConfigApp;
 import com.ider.overlauncher.speedTest.SpeedActivity;
 import com.ider.overlauncher.utils.ActivityAnimationTool;
 import com.ider.overlauncher.utils.AppUtil;
@@ -49,11 +46,7 @@ import com.ider.overlauncher.view.RocketView;
 
 import org.litepal.crud.DataSupport;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static com.ider.overlauncher.R.attr.isCustom;
-import static com.ider.overlauncher.utils.AppUtil.isNeedUpdate;
 
 
 /**
@@ -175,6 +168,12 @@ public class FolderActivity extends FullscreenActivity  {
                     intent.setComponent(new ComponentName("com.zxy.idersettings","com.rk_itvui.settings.factoryreset.Factoryreset"));
                     startActivity(intent);
                 }
+                else if(holder.getPackageName().equals(Constant.ACTION_LOGIN)){
+                    Intent intent = new Intent();
+                    intent.setData(Uri.parse(Constant.ACTION_LOGIN));
+                    handleIntent(intent);
+
+                }
                 else if(holder.getPackageName().equals(Constant.PACKAGE_TOOL_APPMANAGER)){
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setComponent(new ComponentName("com.zxy.idersettings","com.rk_itvui.settings.dialog.ManageApplications"));
@@ -240,7 +239,7 @@ public class FolderActivity extends FullscreenActivity  {
                     return true;
                 }
                 if(tag.equals("01")){
-                    if(position <= 6) {
+                    if(position <= 8) {
                         return true;
                     }
                 }
@@ -291,7 +290,7 @@ public class FolderActivity extends FullscreenActivity  {
                         }
                     }
                 }else if (tag.equals("01")) {
-                        if (i<7) {
+                        if (i<9) {
                         findViewById(R.id.tps).setVisibility(View.INVISIBLE);
                     } else {
                         if (!"add".equals(packages.get(i).getPackageName())) {
@@ -446,8 +445,8 @@ public class FolderActivity extends FullscreenActivity  {
             packages.add(4,new PackageHolder(Constant.PACKAGE_TOOL_SPEED,"01"));
             packages.add(5,new PackageHolder(Constant.ACTION_LOGIN,"01"));
             packages.add(6,new PackageHolder(Constant.PACKAGE_TOOL_FASTKEY,"01"));
-//          packages.add(7,new PackageHolder(Constant.PACKAGE_TOOL_FACTORY,"01"));
-//          packages.add(8,new PackageHolder(Constant.PACKAGE_TOOL_APPMANAGER,"01"));
+          packages.add(7,new PackageHolder("com.ider.mouse","01"));
+          packages.add(8,new PackageHolder("com.ider.update","01"));
 //          packages.add(9,new PackageHolder(Constant.PACKAGE_TOOL_DEVELOPE,"01"));
 //          packages.add(10,new PackageHolder(Constant.PACKAGE_TOOL_MORE,"01"));
 //          packages.add(11,new PackageHolder(Constant.PACKAGE_TOOL_WEATHER,"01"));

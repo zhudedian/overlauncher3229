@@ -819,28 +819,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
 
         public void showNetDialog(){
             Log.i("zzz", "showNetDialog: ");
-            AlertDialog.Builder normalDialog =
-                    new AlertDialog.Builder(HomeActivity.this);
-            normalDialog.setTitle(getResources().getString(R.string.neterro_tip));
-            normalDialog.setMessage("  "+getResources().getString(R.string.net_tip));
-            normalDialog.setPositiveButton(getResources().getString(R.string.btn_enter),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent();
-                            intent.setComponent(new ComponentName("com.android.settings","com.android.settings..wifi.WifiSettings"));
-                            startActivity(intent);
-                        }
-                    });
-            normalDialog.setNegativeButton(getResources().getString(R.string.Cancel),
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                            dialog.dismiss();
-                        }
-                    });
-            dialog =normalDialog.show();
+            if (dialog==null) {
+                AlertDialog.Builder normalDialog =
+                        new AlertDialog.Builder(HomeActivity.this);
+                normalDialog.setTitle(getResources().getString(R.string.neterro_tip));
+                normalDialog.setMessage("  " + getResources().getString(R.string.net_tip));
+                normalDialog.setPositiveButton(getResources().getString(R.string.btn_enter),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent();
+                                intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.wifi.WifiSettings"));
+                                startActivity(intent);
+                            }
+                        });
+                normalDialog.setNegativeButton(getResources().getString(R.string.Cancel),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                                dialog.dismiss();
+                            }
+                        });
+                dialog = normalDialog.show();
+            }else {
+                if (!dialog.isShowing()){
+                    dialog.show();
+                }
+            }
 
         }
 
@@ -928,8 +934,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                     || keyCode == KeyEvent.KEYCODE_7
                     || keyCode == KeyEvent.KEYCODE_8
                     || keyCode == KeyEvent.KEYCODE_9
-                    || keyCode == KeyEvent.KEYCODE_TV_ANTENNA_CABLE
-                    || keyCode == KeyEvent.KEYCODE_DVR) {
+                    || keyCode == KeyEvent.KEYCODE_RO
+                    || keyCode == KeyEvent.KEYCODE_F11) {
                 if (keyCode == LOG_DB[mKeycodeStackIndex])
                 {
                     Log.i(TAG, "onKeyDown: mKeycodeStackIndex++"+mKeycodeStackIndex);
@@ -1014,14 +1020,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                     }
                 } else {
                     Intent intent = null ;
-                    if(currentKey == KeyEvent.KEYCODE_DVR){
+                    if(currentKey == KeyEvent.KEYCODE_RO){
                         intent = HomeActivity.this.getPackageManager().getLaunchIntentForPackage("com.yidian.calendar");
                         pmanager.setKeyPackage(KeyEvent.KEYCODE_RO, "com.yidian.calendar");
                         if (intent!=null) {
                             startActivity(intent);
                         }
                     }
-                    else if(currentKey == KeyEvent.KEYCODE_TV_ANTENNA_CABLE){
+                    else if(currentKey == KeyEvent.KEYCODE_F11){
                         Log.i(TAG,"TVdown");
                         TVdown(AppContext.getAppContext());
                     }else {
@@ -1536,7 +1542,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
         }
         //file
         public void startFile(){
-            Intent intent = HomeActivity.this.getPackageManager().getLaunchIntentForPackage("com.android.rockchip");
+            Intent intent = HomeActivity.this.getPackageManager().getLaunchIntentForPackage("com.softwinner.TvdFileManager");
             if(intent!=null){
                 startActivity(intent);
             }
@@ -1741,7 +1747,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(ld);
                 if (ld / 1000 < Integer.MAX_VALUE) {
-                    ((AlarmManager) HomeActivity.this.getSystemService(Context.ALARM_SERVICE)).setTime(ld);
+//                    ((AlarmManager) HomeActivity.this.getSystemService(Context.ALARM_SERVICE)).setTime(ld);
                     HomeActivity.this.sendBroadcast(new Intent("com.ider.date"));
                 }
             } catch (Exception e) {

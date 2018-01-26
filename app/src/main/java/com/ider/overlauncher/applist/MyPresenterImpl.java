@@ -195,19 +195,20 @@ public class MyPresenterImpl implements AppLicationViewDao.MyPresenter {
 
     @Override
     public void updateAfterUninstall() {
-        apps.remove(position);
+        List<Application> applications = ApplicationUtil.loadAllApplication(context);
+        apps.clear();
+        apps.addAll(applications);
         adapter.notifyDataSetChanged();
         activity.showProgressbarandAppcount(getProgressAndAppcount());
     }
 
     @Override
     public void updateAfterInstall(String packageName) {
-        Application app = ApplicationUtil.doApplication(context, packageName);
-        if (app != null&&!apps.contains(app)) {
-            apps.add(app);
-            adapter.notifyDataSetChanged();
-            activity.showProgressbarandAppcount(getProgressAndAppcount());
-        }
+        List<Application> applications = ApplicationUtil.loadAllApplication(context);
+        apps.clear();
+        apps.addAll(applications);
+        adapter.notifyDataSetChanged();
+        activity.showProgressbarandAppcount(getProgressAndAppcount());
     }
 
     class ApplicationAdapter extends BaseAdapter {

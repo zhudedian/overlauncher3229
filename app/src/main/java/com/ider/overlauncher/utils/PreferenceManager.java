@@ -33,7 +33,7 @@ public class PreferenceManager {
 			editor.commit();
 		}
 		editor.putString(tag, pkgName);
-		editor.commit();
+		editor.apply();
 	}
 
 	public void delete(String tag) {

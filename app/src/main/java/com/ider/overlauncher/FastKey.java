@@ -71,8 +71,8 @@ public class FastKey extends Activity implements OnFocusChangeListener, OnClickL
 		keys[7].setKeycode(KeyEvent.KEYCODE_8);
 		keys[8].setKeycode(KeyEvent.KEYCODE_9);
 		keys[9].setKeycode(KeyEvent.KEYCODE_0);
-		keys[10].setKeycode(KeyEvent.KEYCODE_TV_ANTENNA_CABLE);
-		keys[11].setKeycode(KeyEvent.KEYCODE_DVR);
+		keys[10].setKeycode(KeyEvent.KEYCODE_RO);
+		keys[11].setKeycode(KeyEvent.KEYCODE_F11);
 		select_tip = (TextView) findViewById(R.id.select_tip);
 
 		for(int i = 0; i < keys.length; i++) {

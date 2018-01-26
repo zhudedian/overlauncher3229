@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.ider.overlauncher"
-          >
+    android:sharedUserId="android.uid.system">
 
     <!-- android:sharedUserId="android.uid.system"  <uses-permission android:name="android.permission.INSTALL_PACKAGES"/> -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
     <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name=".AppContext"
@@ -25,10 +26,13 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity
+            android:name=".HomeActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+
+
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.HOME"/>
                 <category android:name="android.intent.category.MONKEY"/>
@@ -68,17 +72,32 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".dream.DayDreamService"
-                  android:exported="true"
-                  android:icon="@mipmap/ic_launcher"
-                  android:label="ScreenSaver"
-                  android:permission="android.permission.BIND_DREAM_SERVICE"
-        >
-        <intent-filter>
-            <action android:name="android.service.dreams.DreamService"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-        </intent-filter>
-    </service>
+        <service
+            android:name=".dream.DayDreamService"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="ScreenSaver"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".support.SupportService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <receiver
+            android:name=".support.SupportReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="alibaba.ailabs.genisdk.android.install.missapp"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

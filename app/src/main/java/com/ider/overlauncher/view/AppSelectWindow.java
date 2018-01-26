@@ -91,7 +91,7 @@ public class AppSelectWindow implements View.OnKeyListener, AdapterView.OnItemCl
         List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent, 0);
         for (ResolveInfo resolveInfo : resolveInfos) {
             String packageName = resolveInfo.activityInfo.applicationInfo.packageName;
-            if(!packageName.equals("com.yidian.calendar")){
+            if(!packageName.equals("com.yidian.calendar")&&!packageName.equals("com.android.settings")){
                 if(locals==null){
                     enties.add(new PackageHolder(packageName, null));
                 }else if(!new ServerApp(packageName).containsPackageName(locals)) {

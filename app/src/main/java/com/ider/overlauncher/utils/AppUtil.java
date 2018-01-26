@@ -21,14 +21,23 @@ import static android.R.attr.versionCode;
  */
 
 public class AppUtil {
+    public static DataApp getAppForName(String packageName, List<DataApp> list){
+        if (list==null){
+            return null;
+        }
+        for (DataApp app:list){
+            if (app.getPackageName().equals(packageName)){;
+                return app;
+            }
+        }
+        return null;
+    }
     public static DataApp isNeedUpdate(String packageName, List<DataApp> list){
         if (list==null){
             return null;
         }
         for (DataApp app:list){
-            Log.i("AppUtil","app.getVercode()="+app.getVercode()+app.getPackageName()+"packageName="+packageName);
             if (app.getPackageName().equals(packageName)){
-                Log.i("AppUtil","app.getVercode()="+app.getVercode()+"getAppVerCode(packageName)="+getAppVerCode(packageName));
                 if (app.getVercode()>getAppVerCode(packageName)){
                     return app;
                 }

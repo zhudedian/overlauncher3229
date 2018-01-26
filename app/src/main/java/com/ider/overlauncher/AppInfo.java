@@ -4,14 +4,17 @@ package com.ider.overlauncher;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,8 +28,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.ider.overlauncher.services.ConfigService;
 import com.ider.overlauncher.utils.DownloadUtil;
 import com.ider.overlauncher.utils.InstallUtil;
+import com.ider.overlauncher.utils.NetUtil;
 import com.ider.overlauncher.utils.PreferenceManager;
 
 
@@ -52,10 +57,12 @@ public class AppInfo extends Activity {
 	String tag;
 	int verCode;
 	String md5;
+	private ConfigService configService;
 	boolean downloading;
 	DownloadUtil downloadUtil;
 	private boolean isCustom=false;
 	private boolean isForceDown = false;
+	private boolean isOpen6Key = false;
 	private PreferenceManager pmanager;
 	private boolean isDownloadComplete;
 
@@ -88,6 +95,7 @@ public class AppInfo extends Activity {
 		this.md5 = data.getString("md5");
 		isCustom = data.getBoolean("isCustom");
 		isForceDown= data.getBoolean("isForceDown",false);
+		isOpen6Key = data.getBoolean("isOpen6Key",false);
 		isDownloadComplete = false;
 		File apk = new File(Constant.APK_CACHE_PATH + "/"
 				+ DownloadUtil.getInstance().getNameFromUrl(url));
@@ -127,13 +135,34 @@ public class AppInfo extends Activity {
 	@Override
 	protected void onDestroy() {
 		unregisterReceiver(packageReceiver);
+		if (configService!=null&&configService.isBinded) {
+			unbindService(connectionmy);
+		}
 		super.onDestroy();
 
 	}
 
 
-
-
+	ServiceConnection connectionmy = new ServiceConnection() {
+		@Override
+		public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+			ConfigService.MBinder binder = (ConfigService.MBinder) iBinder;
+			configService = binder.getService();
+			if(NetUtil.isNetworkAvailable(AppContext.getAppContext()))
+			{
+				checkUpdate(true);
+			}
+		}
+		@Override
+		public void onServiceDisconnected(ComponentName componentName) {
+			bindServices();
+		}
+	};
+	private void checkUpdate(boolean force) {
+		if (configService != null) {
+			configService.checkUpdate(force);
+		}
+	}
 	public void download() {
 
 		showDownloadButton();
@@ -300,6 +329,16 @@ public class AppInfo extends Activity {
 	BroadcastReceiver packageReceiver = new BroadcastReceiver() {
 		public void onReceive(Context context, Intent intent) {
 			Log.i(TAG, "package installed");
+			if (isOpen6Key){
+				if (!pmanager.ifConfigServiceOn()&&NetUtil.isNetworkAvailable(AppContext.getAppContext())) {
+					bindServices();
+					pmanager.setConfigServiceOn();
+					Intent intent2 = new Intent("con.ider.overlauncher.LAUNCHER");
+					sendBroadcast(intent2);
+				}
+				AppInfo.this.finish();
+				return;
+			}
 			String data = intent.getDataString();
 			final String packgename = data.substring(data.indexOf(":") + 1,
 					data.length());
@@ -336,7 +375,12 @@ public class AppInfo extends Activity {
 
 		return super.onKeyDown(keyCode, event);
 	}
-
+	private void bindServices() {
+		if (configService == null || !configService.isBinded) {
+			Intent intent = new Intent(AppInfo.this, ConfigService.class);
+			this.bindService(intent, connectionmy, BIND_AUTO_CREATE);
+		}
+	}
 	public void exitDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(R.string.Downloading_exit_warning);

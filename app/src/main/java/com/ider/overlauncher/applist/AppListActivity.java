@@ -122,11 +122,11 @@ public class AppListActivity extends Activity implements AppLicationViewDao.upda
         int x, y;
 
         if (currentSelectedLine == 0) {
-            y = dip2px(getApplicationContext(), 182);
-            x = dip2px(getApplicationContext(), 212 * (position % 5) + 10);
+            y = dip2px(getApplicationContext(), 189);
+            x = dip2px(getApplicationContext(), 212 * (position % 5) + 38);
         } else {
-            y = dip2px(getApplicationContext(), 192) + dip2px(getApplicationContext(), 144 );
-            x = dip2px(getApplicationContext(), 212 * (position % 5) + 10);
+            y = dip2px(getApplicationContext(), 192) + dip2px(getApplicationContext(), 151 );
+            x = dip2px(getApplicationContext(), 212 * (position % 5) + 38);
         }
         return new int[]{x, y};
     }
@@ -223,13 +223,13 @@ public class AppListActivity extends Activity implements AppLicationViewDao.upda
             String action = intent.getAction();
             if (action.equals(Intent.ACTION_PACKAGE_REMOVED)) {
                 myPresenter.updateAfterUninstall();
-
             } else if (action.equals(Intent.ACTION_PACKAGE_ADDED)) {
                 String data = intent.getDataString();
                 String packgename = data.substring(data.indexOf(":") + 1,
                         data.length());
                 myPresenter.updateAfterInstall(packgename);
             }
+
         }
     };
 
