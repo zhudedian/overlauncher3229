@@ -1457,7 +1457,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                         @Override
                         public void run() {
                             isTopShow = false;
-                            pullDownTopDialog(getResources().getDimension(R.dimen.px100t),0,false);
+                            pullDownTopDialog(-250f,0,false);
                             hideAnimBlurBackground();
                             //  stopMarqueen();
                         }
@@ -1747,7 +1747,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(ld);
                 if (ld / 1000 < Integer.MAX_VALUE) {
-//                    ((AlarmManager) HomeActivity.this.getSystemService(Context.ALARM_SERVICE)).setTime(ld);
+                    ((AlarmManager) HomeActivity.this.getSystemService(Context.ALARM_SERVICE)).setTime(ld);
                     HomeActivity.this.sendBroadcast(new Intent("com.ider.date"));
                 }
             } catch (Exception e) {

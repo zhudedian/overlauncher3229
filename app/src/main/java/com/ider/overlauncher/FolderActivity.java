@@ -427,7 +427,7 @@ public class FolderActivity extends FullscreenActivity  {
                 title.setText(getResources().getString(R.string.common));
             }
             if (tag.equals("02")) {
-                title.setText(getResources().getString(R.string.live));
+                title.setText("电视");
             }
             if (tag.equals("03")) {
                 title.setText("影视");
