@@ -1724,13 +1724,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnFocusChang
 
         }
     private void  showData(){
-        try {
-            Calendar c = Calendar.getInstance();
-            String w = c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-             week.setText(w);
-        } catch (Exception e){
-
-        }
+//        try {
+//            Calendar c = Calendar.getInstance();
+//            String w = c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+//             week.setText(w);
+//        } catch (Exception e){
+//
+//        }
     }
         private void getNetTime() {
             URL url = null;//取得资源对象

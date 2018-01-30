@@ -103,8 +103,21 @@
         android:gravity="center"
         android:singleLine="true"
         android:focusable="false"
+        android:visibility="gone"
         android:focusableInTouchMode="false"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
+    <TextClock
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="13dp"
+        android:id="@+id/textClock2"
+        android:layout_toRightOf="@+id/clock"
+        android:textSize="16sp"
+        android:scaleType="center"
+        android:textColor="#fff"
+        android:format12Hour="EEEE"
+        android:format24Hour="EEEE"/>
 
 </RelativeLayout>
